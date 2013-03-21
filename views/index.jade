@@ -3,14 +3,5 @@ extends layout
 block content
     script(type='text/javascript')
         $(function () {
-            var client = new shotgun.Client(),
-                $display = $('#display');
-            client.execute('help', function (result) {
-                if (result.clearDisplay) $display.html('');
-                for (var count = 0; count < result.lines.length; count++) {
-                    var line = result.lines[count];
-                    $display.append(line.text.replace(/  /g, ' &nbsp;') + '<br />');
-                };
-            });
+            $('body').shotgunConsole();
         });
-    #display
