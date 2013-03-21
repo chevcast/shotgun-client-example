@@ -3,13 +3,13 @@ extends layout
 block content
     script(type='text/javascript')
         $(function () {
-            var shell = new shotgun.Shell('http://localhost:3000'),
+            var client = new shotgun.Client(),
                 $display = $('#display');
-            shell.execute('help help', function (result) {
+            client.execute('help', function (result) {
                 if (result.clearDisplay) $display.html('');
                 for (var count = 0; count < result.lines.length; count++) {
                     var line = result.lines[count];
-                    $('<div>').text(line.text.replace('\n', '<br />')).appendTo($display);
+                    $display.append(line.text.replace(/  /g, ' &nbsp;') + '<br />');
                 };
             });
         });
