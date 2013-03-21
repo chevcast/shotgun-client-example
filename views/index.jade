@@ -1,7 +1,11 @@
 extends layout
 
-block content
+block scripts
     script(type='text/javascript')
         $(function () {
             $('body').shotgunConsole();
         });
+
+block content
+    div Welcome to the shotgun web console example application! Type "help" to continue.
+    br
