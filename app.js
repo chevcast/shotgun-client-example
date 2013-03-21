@@ -7,12 +7,9 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path')
-  , shotgun = require('shotgun')
-  , shotgunClient = require('shotgun-client');
+  , path = require('path');
 
-var app = express(),
-    shell = new shotgun.Shell();
+var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -33,8 +30,15 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 
+// Get reference to the created server.
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
+// Require shotgun and shotgun-client then create a new shell.
+var shotgun = require('shotgun'),
+    shotgunClient = require('shotgun-client'),
+    shell = new shotgun.Shell();
+
+// Use shotgun-client to wire up the server and shell.
 shotgunClient.attach(server, shell);
