@@ -1,6 +1,6 @@
 exports.description = 'Displays the supplied text for a specified number of times.';
 
-exports.usage = '[options]';
+exports.usage = '<message> [options]';
 
 exports.options = {
     message: {
