@@ -1,6 +1,9 @@
 ## shotgun-client-example
 
-This is an example application using shotgun and shotgun-client to create a realtime web terminal in Express.
+[![Dependencies Status](https://gemnasium.com/Chevex/shotgun-client-example.png)](https://gemnasium.com/Chevex/shotgun-client-example)
+[![NPM version](https://badge.fury.io/js/shotgun-client-example.png)](http://badge.fury.io/js/shotgun-client-example)
+
+> This is an example application using shotgun and shotgun-client to create a realtime web terminal in Express.
 
 ### The Code
 
