@@ -4,11 +4,12 @@ exports.usage = '<id> [options]';
 
 exports.options = {
     id: {
-        nodash: true,
+        noName: true,
         required: true,
         description: 'The ID of the desired topic.'
     },
     reply: {
+        prompt: true,
         aliases: ['r'],
         description: 'Specify to write a reply to the topic.'
     }
@@ -21,6 +22,6 @@ exports.invoke = function (options, shell) {
         res.setContext('topic ' + options.id);
     }
     else {
-        res.log('Your reply was: ' + reply);
+        res.log('Your reply was: ' + options.reply);
     }
 };
