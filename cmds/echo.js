@@ -4,7 +4,7 @@ exports.usage = '<message> [options]';
 
 exports.options = {
     message: {
-        nodash: true,
+        noName: true,
         required: true,
         description: 'The message to be displayed.'
     },
@@ -17,7 +17,7 @@ exports.options = {
     }
 };
 
-exports.invoke = function (res, options, shell) {
+exports.invoke = function (options, shell) {
     for (var count = 0; count < options.iterations; count++)
-        res.log(options.message);
+        this.log(options.message);
 };

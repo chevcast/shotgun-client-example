@@ -2,9 +2,15 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-    script(type='text/javascript', src='/shotgun/shotgun.client.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='/shotgun/shotgun.client.js')
+    style.
+        body {
+            padding: 50px;
+            font-family: "Courier New", "Arial";
+            background: #000;
+            color: #bbb;
+        }
     block scripts
   body
     block content
