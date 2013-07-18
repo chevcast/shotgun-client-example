@@ -4,6 +4,7 @@ html
     title= title
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
     script(src='/shotgun/shotgun.client.js')
+    block scripts
     style.
         body {
             padding: 50px;
@@ -11,6 +12,6 @@ html
             background: #000;
             color: #bbb;
         }
-    block scripts
+    block styles
   body
     block content

@@ -38,7 +38,8 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 // Require shotgun and shotgun-client then create a new shell.
 var shotgun = require('shotgun'),
     shotgunClient = require('shotgun-client'),
-    shell = new shotgun.Shell();
+    shell1 = new shotgun.Shell('shell1'),
+    shell2 = new shotgun.Shell('shell2');
 
 // Use shotgun-client to wire up the server and shell.
-shotgunClient.attach(server, shell);
+shotgunClient.attach(server, shell1, shell2);
