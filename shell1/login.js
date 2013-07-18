@@ -13,7 +13,8 @@ exports.options = {
         noName: true,
         required: true,
         prompt: 'Enter your password.',
-        description: 'Your password.'
+        description: 'Your password.',
+        password: true
     }
 };
 
