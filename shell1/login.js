@@ -18,9 +18,10 @@ exports.options = {
     }
 };
 
-exports.invoke = function (options, shell) {
+exports.invoke = function (options, shell, done) {
     if (options.username.toLowerCase() === 'charlie' && options.password === 'password123')
         this.log('Success!');
     else
         this.error('Username or password incorrect.');
+    done();
 };
