@@ -9,20 +9,18 @@ exports.options = {
         description: 'The ID of the desired topic.'
     },
     reply: {
-        prompt: true,
+        prompt: 'Enter your reply.',
         aliases: ['r'],
         description: 'Specify to write a reply to the topic.'
     }
 };
 
-exports.invoke = function (options, shell, done) {
-    var res = this;
+exports.invoke = function (options, shell) {
     if (!options.reply) {
-        res.log('[topic ' + options.id + ' content]');
-        res.setContext('topic ' + options.id);
+        shell.setPassive('topic ' + options.id);
+        shell.log('[topic ' + options.id + ' content]');
     }
     else {
-        res.log('Your reply was: ' + options.reply);
+        shell.log('Your reply was: ' + options.reply.replace(/\n/g, ""));
     }
-    done();
 };

@@ -1,27 +1,34 @@
-exports.description = 'Allows a user to authenticate to the system with the supplied credentials.';
+exports.description = "Allows the user to sign in with their username and password.";
 
-exports.usage = '[username] [password]';
+exports.usage = "[username] [password]";
+
+var usernameValid = true;
 
 exports.options = {
     username: {
         noName: true,
         required: true,
-        prompt: 'Enter your username.',
-        description: 'Your username.'
+        prompt: "Please enter your username.",
+        validate: function (username) {
+            usernameValid = username.toLowerCase() === 'charlie';
+            return true;
+        },
+        hidden: true
     },
     password: {
         noName: true,
         required: true,
-        prompt: 'Enter your password.',
-        description: 'Your password.',
+        prompt: "Please enter your password.",
+        validate: function (password, options) {
+            if (!usernameValid || password !== 'password123')
+                return "Invalid password.";
+            return true;
+        },
+        hidden: true,
         password: true
     }
 };
 
-exports.invoke = function (options, shell, done) {
-    if (options.username.toLowerCase() === 'charlie' && options.password === 'password123')
-        this.log('Success!');
-    else
-        this.error('Username or password incorrect.');
-    done();
+exports.invoke = function (options, shell) {
+    shell.log('Welcome back ' + options.username + '!');
 };
