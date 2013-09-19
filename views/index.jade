@@ -3,8 +3,8 @@ extends layout
 block scripts
     script.
         $(function () {
-            $('#shell1').shotgunConsole('shell1');
-            $('#shell2').shotgunConsole('shell2');
+            $('#shell1').shotgunConsole({ namespace: 'shell1' });
+            $('#shell2').shotgunConsole({ namespace: 'shell2' });
         });
 
 block styles

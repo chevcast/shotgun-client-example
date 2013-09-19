@@ -54,4 +54,5 @@ var shotgun = require('shotgun'),
     });
 
 // Use shotgun-client to wire up the server and shell.
+shotgunClient.debug = true;
 shotgunClient.attach(server, shell1, shell2);
