@@ -1,32 +1,28 @@
-extends layout
-
-block scripts
-    script.
-        $(function () {
-            $('#shell1').shotgunConsole({ namespace: 'shell1' });
-            $('#shell2').shotgunConsole({ namespace: 'shell2' });
-        });
-
-block styles
-    style.
-        .console {
-            border: solid 1px #555;
-            border-radius: 10px;
-            padding: 15px;
-            width: 1000px;
-            height: 200px;
-            overflow: auto;
-        }
-        .green {
-            color: #0f0;
-        }
-        .blue {
-            color: #00f;
-        }
-
-block content
-    h3 Welcome to the shotgun web console example application! Type "help" to continue.
-    h3.green shell1:
-    div#shell1.console.green
-    h3.blue shell2:
-    div#shell2.console.blue
+doctype 5
+html
+    head
+        title= title
+        link(href='/bootstrap.min.css', rel='stylesheet')
+        link(href='/bootstrap-theme.min.css', rel='stylesheet')
+        link(href='/stylesheet.css', rel='stylesheet')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+        script(src='/bootstrap.min.js')
+        script(src='/shotgun/shotgun.client.js')
+        script(src='/main.js')
+    body
+        div.container
+            h2(style = "text-align: center;") Welcome to the shotgun web console example application!
+            div.row
+                div.col-lg-6
+                    h3.green shell1:
+                    div#shell1.console.green
+                div.col-lg-6
+                    h3.yellow shell2:
+                    div#shell2.console.yellow
+            div.row
+                div.col-lg-6
+                    h3.cyan shell3:
+                    div#shell3.console.cyan
+                div.col-lg-6
+                    h3.red shell4:
+                    div#shell4.console.red

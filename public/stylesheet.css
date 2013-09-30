@@ -1,0 +1,32 @@
+body {
+    font-family: "Courier New", "Arial";
+    background: #000;
+    color: #bbb;
+}
+.container {
+    max-width: 1920px;
+}
+.console {
+    border: solid 1px #555;
+    border-radius: 10px;
+    padding: 15px;
+    height: 250px;
+    overflow: auto;
+    margin: 15px;
+}
+.green {
+    color: #0f0;
+    border-color: #0f0;
+}
+.cyan {
+    color: #0ff;
+    border-color: #0ff;
+}
+.red {
+    color: #f00;
+    border-color: #f00;
+}
+.yellow {
+    color: #ff0;
+    border-color: #ff0;
+}
