@@ -9,7 +9,7 @@ exports.invoke = function (shell) {
         shell.log("The following cookies have been set for this domain: ");
         shell.log();
         for (var key in cookies) {
-            shell.log(key.toUpperCase() + ": " + cookies[key]);
+            shell.log(key + ": " + cookies[key]);
         }
     }
     else
