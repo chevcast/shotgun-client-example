@@ -18,7 +18,7 @@ exports.options = {
     }
 };
 
-exports.invoke = function (options, shell) {
+exports.invoke = function (shell, options) {
     shell.setCookie(options.name, options.value, options.days);
     shell.log("Cookie \"" + options.name + "\" was created successfully.");
 }

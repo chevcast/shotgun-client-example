@@ -1,14 +1,15 @@
 exports.description = "Displays all of the cookies currently stored in your browser.";
 
-exports.invoke = function (options, shell) {
+exports.invoke = function (shell) {
     shell.log();
-    var hasCookies;
-    for (var key in shell.context.cookies) hasCookies = true;
+    var cookies = shell.getVar('cookies'),
+        hasCookies = false;
+    for (var key in cookies) hasCookies = true;
     if (hasCookies) {
         shell.log("The following cookies have been set for this domain: ");
         shell.log();
-        for (var key in shell.context.cookies) {
-            shell.log(key.toUpperCase() + ": " + shell.context.cookies[key]);
+        for (var key in cookies) {
+            shell.log(key.toUpperCase() + ": " + cookies[key]);
         }
     }
     else

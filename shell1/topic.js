@@ -15,7 +15,7 @@ exports.options = {
     }
 };
 
-exports.invoke = function (options, shell) {
+exports.invoke = function (shell, options) {
     if (!options.reply) {
         shell.setPassive('topic ' + options.id);
         shell.log('[topic ' + options.id + ' content]');
