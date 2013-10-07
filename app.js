@@ -63,8 +63,7 @@ var shotgun = require('shotgun'),
         namespace: 'shell4',
         cmdsDir: 'shell4',
         defaultCmds: {
-            exit: false,
-            help: false
+            exit: false
         },
         debug: true
     });
