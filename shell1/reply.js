@@ -12,7 +12,8 @@ exports.options = {
 };
 
 exports.invoke = function (shell, options) {
-    var topicId = shell.getVar('recentTopic');
-    shell.log("Your reply was posted to topic " + topicId + ".");
-    shell.log('Your reply was: ' + options.content.replace(/\n/g, ""));
+    shell.context.getVar('recentTopic', function (topicId) {
+        shell.log("Your reply was posted to topic " + topicId + ".");
+        shell.log('Your reply was: ' + options.content.replace(/\n/g, ""));
+    });
 };
