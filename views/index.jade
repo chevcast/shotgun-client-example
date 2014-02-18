@@ -1,19 +1,17 @@
 doctype html
-html(data-ng-app="shotgun")
+html
     head
         title= title
         link(href='/bootstrap.min.css', rel='stylesheet')
         link(href='/bootstrap-theme.min.css', rel='stylesheet')
         link(href='/stylesheet.css', rel='stylesheet')
-        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js')
-        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
         script(src='/bootstrap.min.js')
         script(src='/shotgun/shotgun.client.js')
         script(src='/main.js')
     body
         div.container
             h2(style = "text-align: center;") Welcome to the shotgun web console example application!
-            // These two consoles use the JQuery plugin.
             div.row
                 div.col-lg-6
                     h3.green shell1:
@@ -21,11 +19,10 @@ html(data-ng-app="shotgun")
                 div.col-lg-6
                     h3.yellow shell2:
                     div#shell2.console.yellow
-            // These two consoles use the AngularJS directive.
             div.row
                 div.col-lg-6
                     h3.cyan shell3:
-                    div#shell3.shotgun-console
+                    div#shell3.console.cyan
                 div.col-lg-6
                     h3.red shell4:
-                    div#shell4.shotgun-console
+                    div#shell4.console.red
