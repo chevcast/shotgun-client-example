@@ -12,8 +12,11 @@ exports.options = {
 };
 
 exports.invoke = function (shell, options) {
-    shell.context.getVar('recentTopic', function (topicId) {
-        shell.log("Your reply was posted to topic " + topicId + ".");
-        shell.log('Your reply was: ' + options.content.replace(/\n/g, ""));
-    });
+    var topicId = shell.context.getVar('recentTopic');
+    if (topicId === undefined) {
+        shell.log("You must view a topic first.");
+        return;
+    }
+    shell.log("Your reply was posted to topic " + topicId + ".");
+    shell.log('Your reply was: ' + options.content.replace(/\n/g, ""));
 };

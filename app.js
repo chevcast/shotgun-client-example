@@ -36,36 +36,40 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 
 // Require shotgun and shotgun-client then instantiate four shells.
 var shotgun = require('shotgun'),
-    shotgunClient = require('shotgun-client'),
-    shell1 = new shotgun.Shell({
-        namespace: 'shell1',
-        cmdsDir: 'shell1',
-        defaultCmds: {
-            exit: false
-        },
-        debug: true
-    }),
-    shell2 = new shotgun.Shell({
-        namespace: 'shell2',
-        cmdsDir: 'shell2',
-        defaultCmds: {
-            exit: false
-        },
-        debug: true
-    }),
-    shell3 = new shotgun.Shell({
-        namespace: 'shell3',
-        cmdsDir: 'shell3',
-        debug: true
-    }),
-    shell4 = new shotgun.Shell({
-        namespace: 'shell4',
-        cmdsDir: 'shell4',
-        defaultCmds: {
-            exit: false
-        },
-        debug: true
-    });
+    shotgunClient = require('shotgun-client');
+
+var shell1 = new shotgun.Shell({
+    namespace: 'shell1',
+    cmdsDir: 'shell1',
+    defaultCmds: {
+        exit: false
+    },
+    debug: true
+});
+
+var shell2 = new shotgun.Shell({
+    namespace: 'shell2',
+    cmdsDir: 'shell2',
+    defaultCmds: {
+        exit: false
+    },
+    debug: true
+});
+
+var shell3 = new shotgun.Shell({
+    namespace: 'shell3',
+    cmdsDir: 'shell3',
+    debug: true
+});
+
+var shell4 = new shotgun.Shell({
+    namespace: 'shell4',
+    cmdsDir: 'shell4',
+    defaultCmds: {
+        exit: false
+    },
+    debug: true
+});
 
 // Use shotgun-client to wire up the server and shell.
 shotgunClient.attach(server, shell1, shell2, shell3, shell4);
