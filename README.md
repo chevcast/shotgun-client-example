@@ -1,6 +1,6 @@
 ## shotgun-client-example
 
-[![Dependencies Status](https://gemnasium.com/Chevex/shotgun-client-example.png)](https://gemnasium.com/Chevex/shotgun-client-example)
+[![Dependencies Status](https://gemnasium.com/codetunnel/shotgun-client-example.png)](https://gemnasium.com/codetunnel/shotgun-client-example)
 
 > This is an example application using shotgun and shotgun-client to create a realtime web terminal in Express.
 
