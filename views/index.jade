@@ -5,24 +5,65 @@ html
         link(href='/bootstrap.min.css', rel='stylesheet')
         link(href='/bootstrap-theme.min.css', rel='stylesheet')
         link(href='/stylesheet.css', rel='stylesheet')
-        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js')
+        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js')
+        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-sanitize.min.js')
         script(src='/bootstrap.min.js')
         script(src='/shotgun/shotgun.client.js')
-        script(src='/main.js')
-    body
+        script.
+            $(function () {
+                $('#shell1').shotgunConsole({ namespace: 'shell1' }).execute('intro');
+                $('#shell2').shotgunConsole({ namespace: 'shell2' }).execute('intro');
+            });
+            function ExampleCtrl($scope) {
+                $scope.$watch($scope.shotgunShells.shell4, function () {
+                    var clientShell = $scope.shotgunShells.shell4;
+                    clientShell.on('showAlert', function (message) {
+                        alert(message);
+                        clientShell.socket.emit('alertClosed');
+                    });
+                });
+            }
+    body(ng-app="shotgun")
         div.container
-            h2(style = "text-align: center;") Welcome to the shotgun web console example application!
+            h2(style="text-align: center;") Welcome to the shotgun web console example application!
             div.row
                 div.col-lg-6
-                    h3.green shell1:
+                    h3.green shell1 (JQuery Plugin):
                     div#shell1.console.green
                 div.col-lg-6
-                    h3.yellow shell2:
+                    h3.yellow shell2 (JQuery Plugin):
                     div#shell2.console.yellow
-            div.row
                 div.col-lg-6
-                    h3.cyan shell3:
-                    div#shell3.console.cyan
-                div.col-lg-6
-                    h3.red shell4:
-                    div#shell4.console.red
+                    h3.cyan shell3 (AngularJS Directive):
+                    shotgun-console(namespace="shell3", execute="intro")#shell3.console.cyan
+                div.col-lg-6(ng-controller="ExampleCtrl")
+                    h3.red shell4 (AngularJS Directive):
+                    shotgun-console(namespace="shell4", execute="intro")#shell4.console.red
+
+
+
+// The above markup looks like this when rendered:
+    <body ng-app="shotgun">
+        <div class="container">
+            <h2 style="text-align: center;">Welcome to the shotgun web console example application!</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="green">shell1 (JQuery Plugin):<h3>
+                    <div id="shell1" class="console green"></div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="yellow">shell2 (JQuery Plugin):</h3>
+                    <div id="shell2" class="console yellow"></div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="cyan">shell3 (AngularJS Directive):</h3>
+                    <shotgun-console id="shell3" class="console cyan" namespace="shell3" execute="intro" />
+                </div>
+                <div class="col-lg-6" ng-controller="ExampleCtrl">
+                    <h3 class="red">shell4 (AngularJS Directive):</h3>
+                    <shotgun-console id="shell4" class="console red" namespace="shell4" execute="intro" />
+                </div>
+            </div>
+        </div>
+    </body>
