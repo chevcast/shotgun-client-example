@@ -2,6 +2,7 @@ body {
     font-family: "Courier New", "Arial";
     background: #000;
     color: #bbb;
+    padding: 25px 25px 50px 25px
 }
 .container {
     max-width: 1920px;
@@ -12,7 +13,6 @@ body {
     padding: 15px;
     height: 250px;
     overflow: auto;
-    margin: 15px;
 }
 .green {
     color: #0f0;
