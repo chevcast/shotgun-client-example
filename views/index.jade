@@ -7,23 +7,50 @@ html
         link(href='/stylesheet.css', rel='stylesheet')
         script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js')
         script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js')
-        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-sanitize.min.js')
         script(src='/bootstrap.min.js')
         script(src='/shotgun/shotgun.client.js')
         script.
+
+            // JQuery DOM Ready function.
             $(function () {
+                // Manually invoke the shotgunConsole plugin on the first two shell consoles.
                 $('#shell1').shotgunConsole({ namespace: 'shell1' }).execute('intro');
                 $('#shell2').shotgunConsole({ namespace: 'shell2' }).execute('intro');
+
+                // Shells 3 and 4 are rendered with the AngularJS adapter.
+                // Shell 4 shows off some additional functionality with the Angular
+                // contoller below.
             });
+
+            // AngularJS Controller that controls shell4.
             function ExampleCtrl($scope) {
-                $scope.$watch($scope.shotgunShells.shell4, function () {
+                // Wait for shell4 to be added to the scope.
+                var unwatch = $scope.$watch($scope.shotgunShells.shell4, function () {
+                    // Once shell4 is available we no longer need to watch the scope.
+                    unwatch();
+                    // Get reference to shell4.
                     var clientShell = $scope.shotgunShells.shell4;
+                    // Listen for our custom event.
                     clientShell.on('showAlert', function (message) {
-                        alert(message);
-                        clientShell.socket.emit('alertClosed');
+                        // Put alert logic inside a function.
+                        function doAlert () {
+                            // Show alert.
+                            alert(message);
+                            // Invoke the callback to let our module know the alert was closed.
+                            clientShell.socket.emit('alertClosed');
+                        }
+                        // Check if the jquery console is still processing text.
+                        if (clientShell.ui.$display.data('processingQueue'))
+                            // If it is, attach a one time event handler that will fire
+                            // when the queue is finished.
+                            clientShell.ui.$display.one('queueFinished', doAlert);
+                        else
+                            // Otherwise simply invoke doAlert.
+                            doAlert();
                     });
                 });
             }
+
     body(ng-app="shotgun")
         div.container
             h2(style="text-align: center;") Welcome to the shotgun web console example application!

@@ -14,7 +14,11 @@ exports.options = {
 exports.invoke = function (shell, options) {
     shell.log('Showing message in alert...');
     shell.emit('showAlert', options.message);
-    shell.context.getVar('socket').on('alertClosed', function () {
+    // Temporary workaround for socket.io issue #1444
+    // https://github.com/LearnBoost/socket.io/issues/1444
+    shell.on('alertClosed', function () {
+        // Callback is invoked by the client, sending a realtime
+        // response so we know the alert box was closed by the user.
         shell.log("Alert was closed :)");
     });
 };
