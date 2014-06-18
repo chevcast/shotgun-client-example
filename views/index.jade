@@ -31,13 +31,13 @@ html
                     // Get reference to shell4.
                     var clientShell = $scope.shotgunShells.shell4;
                     // Listen for our custom event.
-                    clientShell.on('showAlert', function (message) {
+                    clientShell.on('showAlert', function (message, callback) {
                         // Put alert logic inside a function.
                         function doAlert () {
                             // Show alert.
                             alert(message);
                             // Invoke the callback to let our module know the alert was closed.
-                            clientShell.socket.emit('alertClosed');
+                            callback();
                         }
                         // Check if the jquery console is still processing text.
                         if (clientShell.ui.$display.data('processingQueue'))
